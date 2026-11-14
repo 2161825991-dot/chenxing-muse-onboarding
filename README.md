@@ -1,12 +1,12 @@
-# 辰星 Muse 接入说明
+# 辰星 Agent 接入说明
 
 **服务已就绪，等待 Dot 实际接入验证。** 运行方已用 Mac 空白客户端经公开 HTTPS 完成登记、capabilities 和窗口短码流程；这不代表 Dot 已连上，也不代表已读取商品。
 
-GitHub 是固定说明入口，不是 API、网络代理或业务中转。
+GitHub 是固定说明入口，不是 API、网络代理或业务中转。Agent 是统一入口称谓；当前仅沿用已发布的 public_product 客户端协议，不表示已接入其他 SDK。
 
-## 新 Muse 从这里开始
+## Agent 接入 / 浏览器绑定 / Agent 状态
 
-读取 [MUSE_PROMPT.txt](MUSE_PROMPT.txt) 和 [connection.json](connection.json)。当前临时来源：
+读取 [Agent接入提示词](MUSE_PROMPT.txt) 和 [connection.json](connection.json)。当前临时来源：
 
 - [无凭据健康页](https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health)
 - [公开 bootstrap](https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/bootstrap)
@@ -15,7 +15,7 @@ GitHub 是固定说明入口，不是 API、网络代理或业务中转。
 
 bootstrap 必须为 `chenxing.muse-bootstrap/v1`，server_id 为 `935ebdcb-83b1-4469-b380-be6d98d0fd2e`，network.endpoint 必须等于 connection.json 的完整 public_origin。只保存白名单四个文件：mac_read_client.py、join.py、endpoint_policy.py、trusted-endpoints.json；逐文件解码并核对 bytes 与 SHA-256，放在同一私密目录。
 
-一次性邀请链接由用户**另外私下提供**。GET 页面或 bootstrap 不兑换邀请。使用验证后的正式客户端独立登记，先读自己的 capabilities，再申请 pair-window 短码；用户只在指定 Chrome 窗口确认。长凭据仅存 Muse 本地私密 profile，不发聊天或 GitHub。
+一次性邀请链接由用户**另外私下提供**。GET 页面或 bootstrap 不兑换邀请。使用验证后的正式客户端独立登记，先读自己的 capabilities，再申请 pair-window 短码；用户只在指定 Chrome 窗口确认。长凭据仅存 Agent 本地私密 profile，不发聊天或 GitHub。
 
 ## 范围与当前限制
 

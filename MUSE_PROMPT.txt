@@ -1,4 +1,4 @@
-请按README和connection.json验证并接入辰星。当前服务状态ready_for_dot_validation，server_ready/onboarding_ready=true，但dot_verified=false；不要把运行方的Mac验通当成你已经连上。
+请以 Agent 身份，按README和connection.json验证并接入辰星。当前服务状态ready_for_dot_validation，server_ready/onboarding_ready=true，但dot_verified=false；不要把运行方的Mac验通当成你已经连上。
 
 1. 先无凭据普通TLS GET：
 https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health
