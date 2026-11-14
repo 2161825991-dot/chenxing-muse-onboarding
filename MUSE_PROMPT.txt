@@ -1,0 +1,6 @@
+请按这个仓库的README和connection.json接入辰星，只使用已明确verified的公开HTTPS来源。
+如果connection.json仍是awaiting_verified_https，停止登记，告诉我公开入口尚未发布；不要猜地址、把私网地址当公网，也不要索取token、Cookie或完整配置。
+有正式公开入口后，先GET公开health/bootstrap。检查bootstrap身份及其资源清单，解码公开资源并逐文件核bytes和SHA-256，再使用正式客户端。不要下载整个ERP或执行未经校验的代码。
+一次性邀请由我单独私下给你。使用该原邀请按正式客户端完成一次独立登记；GET页面不代表登记完成。凭据只保存在你本地私密profile，不发聊天或GitHub。
+先读自己的capabilities，再通过正常pair-window流程申请短码。我会在指定Chrome窗口确认；不要替换已有窗口或设备身份。分别报告网络、登记、配对和任务结果。
+暂不创建商品任务、不修改商品、不保存/同步/刊登或调用付费AI。若已有请求处于unknown，保留原号，仅回查，不重发。

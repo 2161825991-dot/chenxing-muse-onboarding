@@ -1,0 +1,14 @@
+{
+  "schema": "chenxing.muse-onboarding-document/v1",
+  "status": "awaiting_verified_https",
+  "verified": false,
+  "public_origin": null,
+  "health_path": null,
+  "bootstrap_path": null,
+  "join_page_path": null,
+  "client_archive_path": null,
+  "public_bootstrap_schema": "chenxing.muse-bootstrap/v1",
+  "authenticated_resources_schema": "chenxing.muse-resources/v1",
+  "invitation_in_repository": false,
+  "repo_executes_business": false
+}
