@@ -1,26 +1,28 @@
 {
   "schema": "chenxing.muse-onboarding-document/v1",
-  "status": "awaiting_verified_public_access",
-  "verified": false,
-  "public_origin": null,
-  "health_path": null,
-  "bootstrap_path": null,
-  "join_page_path": null,
-  "client_archive_path": null,
+  "status": "ready_for_dot_validation",
+  "server_ready": true,
+  "onboarding_ready": true,
+  "verified": true,
+  "dot_verified": false,
+  "verification_scope": "Runtime and Mac normalTLS public protocol accepted; actual Dot client not verified",
+  "public_origin": "https://collectibles-wallet-offices-stocks.trycloudflare.com",
+  "temporary": true,
+  "expected_server_id": "935ebdcb-83b1-4469-b380-be6d98d0fd2e",
+  "health_path": "/onboard/v1/health",
+  "bootstrap_path": "/onboard/v1/bootstrap",
+  "join_page_path": "/onboard/join",
+  "client_archive_path": "/onboard/client.zip",
   "public_bootstrap_schema": "chenxing.muse-bootstrap/v1",
   "authenticated_resources_schema": "chenxing.muse-resources/v1",
+  "bootstrap_file_allowlist": [
+    "mac_read_client.py",
+    "join.py",
+    "endpoint_policy.py",
+    "trusted-endpoints.json"
+  ],
+  "normal_TLS_and_hostname_validation_required": true,
+  "follow_redirects": false,
   "invitation_in_repository": false,
-  "repo_executes_business": false,
-  "transport_probe": {
-    "health_url": "https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health",
-    "method": "GET",
-    "requires_credentials": false,
-    "temporary": true,
-    "onboarding_ready": false,
-    "transport_only": true,
-    "protected_paths": "closed",
-    "evidence_scope": "Runtime local normal TLS/HTTP200 recorded; cloud/Dot accessibility not verified",
-    "TLS_failure_action": "stop and report exact error; never bypass certificate validation",
-    "enrollment_allowed": false
-  }
+  "repo_executes_business": false
 }

@@ -1,10 +1,19 @@
-请按这个仓库的README和connection.json接入辰星，只使用已明确verified的公开HTTPS来源。
-当前connection.json为awaiting_verified_public_access，public_origin仍为null。你现在只允许对下面的无凭据临时健康URL做一次普通GET，不发Authorization或Cookie：
+请按README和connection.json验证并接入辰星。当前服务状态ready_for_dot_validation，server_ready/onboarding_ready=true，但dot_verified=false；不要把运行方的Mac验通当成你已经连上。
+
+1. 先无凭据普通TLS GET：
 https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health
-必须正常校验TLS。TLS失败或网络不可达就停止，把实际错误告诉我；不要使用忽略证书的选项、绕过警告或换成私网地址。不要凭泛化的工具不可访问错误断言证书有问题。
-若响应transport_only=true/onboarding_ready=false/protected_paths=closed，报告“传输探测结果，接入未就绪”，到此停止，不领取邀请、不登记、不调用其他路径。运行方本机通过不等于你所在云端或Dot已通过。
-只有以后connection.json正式verified=true且public_origin非空、公开接入已ready后，才继续下面的登记流程。不要索取token、Cookie或完整配置。
-有正式公开入口后，先GET公开health/bootstrap。检查bootstrap身份及其资源清单，解码公开资源并逐文件核bytes和SHA-256，再使用正式客户端。不要下载整个ERP或执行未经校验的代码。
-一次性邀请由我单独私下给你。使用该原邀请按正式客户端完成一次独立登记；GET页面不代表登记完成。凭据只保存在你本地私密profile，不发聊天或GitHub。
-先读自己的capabilities，再通过正常pair-window流程申请短码。我会在指定Chrome窗口确认；不要替换已有窗口或设备身份。分别报告网络、登记、配对和任务结果。
-暂不创建商品任务、不修改商品、不保存/同步/刊登或调用付费AI。若已有请求处于unknown，保留原号，仅回查，不重发。
+https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/bootstrap
+正常校验证书和hostname，不跟随重定向，不发Authorization/Cookie。TLS或网络失败则停止，把真实错误告诉我；不得-k、忽略证书警告、改hosts、换私网或自行配置代理绕过校验。泛化“工具不可访问”不等于证书无效。
+
+2. bootstrap必须schema=chenxing.muse-bootstrap/v1，server_id=935ebdcb-83b1-4469-b380-be6d98d0fd2e，network.endpoint精确为https://collectibles-wallet-offices-stocks.trycloudflare.com。若health仍是transport_only/未就绪/closed，或身份不符，立即停止，不登记。
+只保存bootstrap白名单四个资源mac_read_client.py、join.py、endpoint_policy.py、trusted-endpoints.json。解码content_base64后逐项核对bytes和SHA-256，放同一个私密目录；任何不符都不执行。不下载整个ERP，不执行其它文件。
+
+3. 确认以上通过后，使用我另外私下给的完整一次性邀请链接。邀请绝不从GitHub获取，也不回显到聊天。正常命令为：
+python3 mac_read_client.py --join-link <用户私下提供的完整链接> --operation capabilities
+再使用相同正式客户端与原身份运行：
+python3 mac_read_client.py --join-link <同一私下链接> --operation pair-window
+由正式客户端保存登记nonce/原请求号及profile，不自行重建身份或nonce；长凭据只保存在你本地私密profile，不能上传聊天、GitHub或日志。
+
+4. 将窗口短码给我，我会在指定Chrome窗口确认。device/window_reference由你自己保留，不要求我复制第二个编号，不替换已有设备或窗口。分别报告HTTPS、资源校验、独立登记、capabilities、短码/窗口确认结果；没完成就按实际状态报。
+
+本次先只验证接入，不创建商品任务。新身份仅public_product，不得读取ERP资料、修改/保存/同步/刊登商品或调用付费AI。任何既有请求unknown时保留原号，只回查，不重发。临时域名失效时停止并等运行方更新固定GitHub说明，不猜新地址。

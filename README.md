@@ -1,31 +1,26 @@
 # 辰星 Muse 接入说明
 
-这是公开说明入口，不是 ERP、网络代理或业务执行端。
+**服务已就绪，等待 Dot 实际接入验证。** 运行方已用 Mac 空白客户端经公开 HTTPS 完成登记、capabilities 和窗口短码流程；这不代表 Dot 已连上，也不代表已读取商品。
 
-**当前状态：仅开放无凭据健康页测试，正式接入仍未就绪，不能登记新客户端。**
+GitHub 是固定说明入口，不是 API、网络代理或业务中转。
 
-运行方验证完成后，会在 [connection.json](connection.json) 中填入实际可用的公开 HTTPS 来源，并同步更新本页。私网地址不作为远端 Muse 可用入口。
+## 新 Muse 从这里开始
 
-## 给新 Muse
+读取 [MUSE_PROMPT.txt](MUSE_PROMPT.txt) 和 [connection.json](connection.json)。当前临时来源：
 
-复制 [MUSE_PROMPT.txt](MUSE_PROMPT.txt) 的内容给新 Muse。一次性邀请链接由用户另外私下提供，不写入本仓库。
+- [无凭据健康页](https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health)
+- [公开 bootstrap](https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/bootstrap)
 
-正常流程：读取公开 bootstrap → 按其长度与 SHA-256 校验客户端资源 → 使用单独提供的邀请登记独立客户端 → 读取自己的 capabilities → 申请目标窗口短码 → 用户只在指定 Chrome 窗口确认。
+先做普通 HTTPS GET，必须正常验证证书及域名，不跟随重定向、不附带凭据。失败时保留实际错误并停止；不要绕过证书警告、改用私网地址或把泛化工具错误直接解释为 TLS 错误。
 
-登记、配对和真实商品读取是不同结果。网络或登记未完成时如实报告，不能宣布已接通。
+bootstrap 必须为 `chenxing.muse-bootstrap/v1`，server_id 为 `935ebdcb-83b1-4469-b380-be6d98d0fd2e`，network.endpoint 必须等于 connection.json 的完整 public_origin。只保存白名单四个文件：mac_read_client.py、join.py、endpoint_policy.py、trusted-endpoints.json；逐文件解码并核对 bytes 与 SHA-256，放在同一私密目录。
 
-## 地址与资源
+一次性邀请链接由用户**另外私下提供**。GET 页面或 bootstrap 不兑换邀请。使用验证后的正式客户端独立登记，先读自己的 capabilities，再申请 pair-window 短码；用户只在指定 Chrome 窗口确认。长凭据仅存 Muse 本地私密 profile，不发聊天或 GitHub。
 
-只使用 connection.json 已标为 verified 的来源。公开 bootstrap 为 `chenxing.muse-bootstrap/v1`；资源清单中的 `files[].filename`、`bytes`、`sha256`、`content_base64` 用于保存前校验。资源更新读取 `chenxing.muse-resources/v1` 清单并按同样规则校验；该资源接口使用客户端自己的本地身份，不公开身份文件。
+## 范围与当前限制
 
-具体路径、命令和可用操作以最终发布的服务合同为准。本仓库不提供未发布客户端脚本，也不会通过 GitHub Actions 执行业务。
+新身份仅为 public_product：自己的窗口配对、用户授权的公开商品读取及原任务状态。不授予 ERP 预览/写入、admin、设备执行凭据、付费 AI 或平台修改权限。首次接入验证先不创建商品任务。
 
-已有请求结果不明确时保留原请求号，只查询原状态，不自动重发。
+本域名为临时 Quick Tunnel，可能更换；稳定入口仍待运行方另行完成。`dot_verified=false`，需要 Dot 在自己的真实运行环境验证。未知请求保留原号，只回查，不自动重发。
 
-## 现在只测试健康页
-
-临时无凭据地址：[GET 健康页](https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health)。只做一次普通 GET，不附带凭据。
-
-运行方本机已记录正常 TLS 和 HTTP 200；尚未证明云端或 Dot 能访问。当前状态为 `transport_only=true`、`onboarding_ready=false`、`protected_paths=closed`，只能说明传输健康检查，不能据此领取邀请、登记或调用业务。若 TLS 失败，停止并报告原始错误；不要忽略证书校验或绕过警告。
-
-GitHub 是固定说明入口，不是网络代理或业务中转。该临时健康地址可能更换，正式 `public_origin` 仍为 null，等待真实公开接入 gate 上线和验通。
+本仓库始终只有说明和公开合同，不存邀请、profile、秘密或客户端脚本，也不通过 GitHub Actions 执行业务。
