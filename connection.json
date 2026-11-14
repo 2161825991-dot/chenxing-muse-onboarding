@@ -1,6 +1,6 @@
 {
   "schema": "chenxing.muse-onboarding-document/v1",
-  "status": "awaiting_verified_https",
+  "status": "awaiting_verified_public_access",
   "verified": false,
   "public_origin": null,
   "health_path": null,
@@ -10,5 +10,17 @@
   "public_bootstrap_schema": "chenxing.muse-bootstrap/v1",
   "authenticated_resources_schema": "chenxing.muse-resources/v1",
   "invitation_in_repository": false,
-  "repo_executes_business": false
+  "repo_executes_business": false,
+  "transport_probe": {
+    "health_url": "https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health",
+    "method": "GET",
+    "requires_credentials": false,
+    "temporary": true,
+    "onboarding_ready": false,
+    "transport_only": true,
+    "protected_paths": "closed",
+    "evidence_scope": "Runtime local normal TLS/HTTP200 recorded; cloud/Dot accessibility not verified",
+    "TLS_failure_action": "stop and report exact error; never bypass certificate validation",
+    "enrollment_allowed": false
+  }
 }

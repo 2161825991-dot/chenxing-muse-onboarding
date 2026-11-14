@@ -1,5 +1,9 @@
 请按这个仓库的README和connection.json接入辰星，只使用已明确verified的公开HTTPS来源。
-如果connection.json仍是awaiting_verified_https，停止登记，告诉我公开入口尚未发布；不要猜地址、把私网地址当公网，也不要索取token、Cookie或完整配置。
+当前connection.json为awaiting_verified_public_access，public_origin仍为null。你现在只允许对下面的无凭据临时健康URL做一次普通GET，不发Authorization或Cookie：
+https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health
+必须正常校验TLS。TLS失败或网络不可达就停止，把实际错误告诉我；不要使用忽略证书的选项、绕过警告或换成私网地址。不要凭泛化的工具不可访问错误断言证书有问题。
+若响应transport_only=true/onboarding_ready=false/protected_paths=closed，报告“传输探测结果，接入未就绪”，到此停止，不领取邀请、不登记、不调用其他路径。运行方本机通过不等于你所在云端或Dot已通过。
+只有以后connection.json正式verified=true且public_origin非空、公开接入已ready后，才继续下面的登记流程。不要索取token、Cookie或完整配置。
 有正式公开入口后，先GET公开health/bootstrap。检查bootstrap身份及其资源清单，解码公开资源并逐文件核bytes和SHA-256，再使用正式客户端。不要下载整个ERP或执行未经校验的代码。
 一次性邀请由我单独私下给你。使用该原邀请按正式客户端完成一次独立登记；GET页面不代表登记完成。凭据只保存在你本地私密profile，不发聊天或GitHub。
 先读自己的capabilities，再通过正常pair-window流程申请短码。我会在指定Chrome窗口确认；不要替换已有窗口或设备身份。分别报告网络、登记、配对和任务结果。

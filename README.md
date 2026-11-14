@@ -2,7 +2,7 @@
 
 这是公开说明入口，不是 ERP、网络代理或业务执行端。
 
-**当前状态：公开 HTTPS 接入地址正在确认，尚不能凭此仓库登记新客户端。**
+**当前状态：仅开放无凭据健康页测试，正式接入仍未就绪，不能登记新客户端。**
 
 运行方验证完成后，会在 [connection.json](connection.json) 中填入实际可用的公开 HTTPS 来源，并同步更新本页。私网地址不作为远端 Muse 可用入口。
 
@@ -21,3 +21,11 @@
 具体路径、命令和可用操作以最终发布的服务合同为准。本仓库不提供未发布客户端脚本，也不会通过 GitHub Actions 执行业务。
 
 已有请求结果不明确时保留原请求号，只查询原状态，不自动重发。
+
+## 现在只测试健康页
+
+临时无凭据地址：[GET 健康页](https://collectibles-wallet-offices-stocks.trycloudflare.com/onboard/v1/health)。只做一次普通 GET，不附带凭据。
+
+运行方本机已记录正常 TLS 和 HTTP 200；尚未证明云端或 Dot 能访问。当前状态为 `transport_only=true`、`onboarding_ready=false`、`protected_paths=closed`，只能说明传输健康检查，不能据此领取邀请、登记或调用业务。若 TLS 失败，停止并报告原始错误；不要忽略证书校验或绕过警告。
+
+GitHub 是固定说明入口，不是网络代理或业务中转。该临时健康地址可能更换，正式 `public_origin` 仍为 null，等待真实公开接入 gate 上线和验通。
