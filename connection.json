@@ -5,9 +5,9 @@
   "onboarding_ready": true,
   "verified": true,
   "dot_verified": false,
-  "verification_scope": "Runtime and Mac normalTLS public protocol accepted; actual Dot client not verified",
-  "public_origin": "https://collectibles-wallet-offices-stocks.trycloudflare.com",
-  "temporary": true,
+  "verification_scope": "Formal Funnel default-CA HTTPS and Mac Chrome health200/join200 plus fresh bounded protocol and safety tests passed; external Dot, target Chrome binding and plugin readiness not proven",
+  "public_origin": "https://mhcmac-mini.tail54a02e.ts.net",
+  "temporary": false,
   "expected_server_id": "935ebdcb-83b1-4469-b380-be6d98d0fd2e",
   "health_path": "/onboard/v1/health",
   "bootstrap_path": "/onboard/v1/bootstrap",
@@ -24,5 +24,7 @@
   "normal_TLS_and_hostname_validation_required": true,
   "follow_redirects": false,
   "invitation_in_repository": false,
-  "repo_executes_business": false
+  "repo_executes_business": false,
+  "access_scope": "fresh public_product; only own bound window Mercado Libre public read_product_json and own status/tasks; no ERP/admin/orders/procurement/paid AI",
+  "blocked_action": "stop and report actual reason; do not rotate domains, proxies or bypass warnings"
 }
